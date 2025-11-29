@@ -1,14 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 // Card Component with props
 const Card = ({ title, rating, isAvailable }) => {
-  
+     const [count, setCount] = useState(0);
     const [hasLiked, setHasLiked] = useState(false);
+
+    useEffect (() => {
+      console.log(`${title} has been liked : ${hasLiked}`);
+    }, [hasLiked]);
 
   return (
     //inline styling
-    <div className='card' 
+    <div className='card' onClick={() => setCount(count+1)}
     // style={{
     //   border : '1px solid #4b5362',
     //   padding : '20px',
@@ -18,7 +22,7 @@ const Card = ({ title, rating, isAvailable }) => {
     //   minHeight : '100px',
     // }}
     >
-      <h2>{title}</h2>
+      <h2>{title} {count} {count || null}</h2>
 
       {/* New numeric prop */}
       <p>Rating: {rating}</p>
