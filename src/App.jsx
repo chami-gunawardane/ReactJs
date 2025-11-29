@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import './App.css'
 
 // Card Component with props
 const Card = ({ title, rating, isAvailable }) => {
+  
+    const [hasLiked, setHasLiked] = useState(false);
+
   return (
     //inline styling
     <div className='card' 
@@ -21,6 +25,11 @@ const Card = ({ title, rating, isAvailable }) => {
 
       {/* New boolean prop */}
       <p>Available: {isAvailable ? "Yes" : "No"}</p>
+
+      {/* toggle like button */}
+      <button onClick={() => setHasLiked(!hasLiked)}>
+        { hasLiked ? "Liked!" : "Like" }
+      </button>
     </div>
   )
 }
